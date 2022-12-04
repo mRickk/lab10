@@ -1,0 +1,12 @@
+#files
+*.txt
+*.bin
+*.class
+gradlew
+gradlew.bat
+
+#dir
+.gradle
+bin
+build
+gradle
