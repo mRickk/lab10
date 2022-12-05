@@ -1,6 +1,6 @@
 package it.unibo.oop.lab.lambda;
 
-import java.lang.StackWalker.Option;
+//import java.lang.StackWalker.Option;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,7 +15,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import javax.naming.spi.DirStateFactory.Result;
+//import javax.naming.spi.DirStateFactory.Result;
 
 /**
  * This class will contain four utility functions on lists and maps, of which the first one is provided as example.

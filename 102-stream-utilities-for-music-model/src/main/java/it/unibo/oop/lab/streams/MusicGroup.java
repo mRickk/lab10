@@ -5,7 +5,7 @@ import java.util.OptionalDouble;
 import java.util.stream.Stream;
 
 /**
- *
+ * Interface that models a generic music group
  */
 public interface MusicGroup {
 
