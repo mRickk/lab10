@@ -7,6 +7,9 @@ import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -38,7 +41,14 @@ public final class LambdaFilter extends JFrame {
         /**
          * Commands.
          */
-        IDENTITY("No modifications", Function.identity());
+        IDENTITY("No modifications", Function.identity()),
+        LOWERCASE("Convert to lowercase", String::toLowerCase),
+        COUNT_CHARS("Length of strings", s -> Integer.toString(s.length())),
+        COUNT_LINES("Number of lines", s -> Long.toString(s.chars().filter((c) -> c == '\n').count() + 1)),
+        ALPHABETICAL_ORDER("Alphabetical order", s -> Stream.of(s.replace('\n', ' ').split(" ")).sorted(String::compareTo).map(z -> z + " ").reduce(String::concat).get()),
+        COUNT_WORDS("Count words", s -> Stream.of(s.replace('\n', ' ').split(" "))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet().stream()
+                .map(z -> z.getKey() + " -> " + z.getValue() + " ").reduce(String::concat).get());
 
         private final String commandName;
         private final Function<String, String> fun;
